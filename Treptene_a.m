@@ -5,7 +5,7 @@
 % 	- smu6tenie ot patia - 4 harmonika analiti4no
 %      - Stepen "mm" se zadava 
 
-clear  ;
+clear;
 betaL = input('Koef.na dempferirane na CRS s ekwiwal.linnen dempfer,Ns/m beta=');
 mm = input('Zadaite stepen na dempfera mm =');  
 beta = betaL*0.1/(0.1^(mm));  % korekcia na beta za nelineen dempfer

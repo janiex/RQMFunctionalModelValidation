@@ -26,7 +26,7 @@ if(0 == check_empty1)
     
     
 end
-if((1 == check_empty) & (1 == check_empty1))
+if((1 == check_empty) && (1 == check_empty1))
     return;
 end
 x_start = file_params(1);

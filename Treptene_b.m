@@ -6,7 +6,7 @@
 %      - Stepen "mm" se zadava 
 
 clear;
-clc
+clc;
 
 choice_str = {'Параметризация по коефициент на дефмериране','Параметризация по скорост'};
 [select_param,v] = listdlg('PromptString','Изберете параметър:',...
