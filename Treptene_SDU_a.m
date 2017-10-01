@@ -44,10 +44,10 @@ function yt = Treptene_SDU_a(t,y, ...
               + eK(3)*cos(w(3)*ti(4))+eK(4)*cos(w(4)*ti(4)) - 1.) ;        
       e4p = -e01*(eKw(1)*sin(w(1)*ti(4))+eKw(2)*sin(w(2)*ti(4))+ ...
                 + eKw(3)*sin(w(3)*ti(4))+eKw(4)*sin(w(4)*ti(4))) ;             
-    else
+  else
 	    e4  = 0 ;
 		e4p = 0 ;   
-    end
+  end
 	
             d1p = y(7)-y(8)-y(9)-L*y(10);
             d2p = y(7)-y(8)+y(9)+L*y(10);

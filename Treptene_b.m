@@ -53,7 +53,7 @@ for itt = 1:iterations
     betaL = 200000;
     % Начало на обработката
     %mm = input('Zadaite stepen na dempfera mm =');  
-    beta = betaL*0.1/(0.1^(mm))  % korekcia na beta za nelineen dempfer
+    beta = betaL*0.1/(0.1^(mm));  % korekcia na beta za nelineen dempfer
     m =     44160. ;        % kg , masa na koscha
     c =   1764800. ;        % N/m , koravina na CRS
     mt =    13494. ;        % kg , masa na obresorenara chast na taligata
@@ -100,9 +100,9 @@ for itt = 1:iterations
 
 
 
-      F  = v/eL1     % Hz , chestota na smuschtenie ot 1-vi harmonik
-      T  = 1/F     ;  % s , period 
-      tf = nT*T      % s , vreme za razglevdan (pat S=eL1*nT*T)
+      F  = v/eL1;     % Hz , chestota na smuschtenie ot 1-vi harmonik
+      T  = 1/F;       % s , period 
+      tf = nT*T;      % s , vreme za razglevdan (pat S=eL1*nT*T)
       Fdisc = 100; % 100 Hz sampling rate
       Tdisc = 1/Fdisc; % period na diskretizaciq
       t_disc = (0:Tdisc:tf)';
@@ -125,82 +125,82 @@ for itt = 1:iterations
                  
         len_t = length(t);
         Qpp = zeros(len_t,6);
-        for it = 1:len_t
-            tt = t(it);
-            ti(1) = tt - tei(1) - otm ;
-            ti(2) = tt - tei(2) - otm ;
-            ti(3) = tt - tei(3) - otm ;
-            ti(4) = tt - tei(4) - otm ;
+for it = 1:len_t
+    tt = t(it);
+    ti(1) = tt - tei(1) - otm ;
+    ti(2) = tt - tei(2) - otm ;
+    ti(3) = tt - tei(3) - otm ;
+    ti(4) = tt - tei(4) - otm ;
         
-      if ti(1) >= 0.	
-          e1 = e01*(eK(1)*cos(w(1)*ti(1))+eK(2)*cos(w(2)*ti(1))+ ...
-                  + eK(3)*cos(w(3)*ti(1))+eK(4)*cos(w(4)*ti(1)) - 1.) ;
-          e1p = -e01*(eKw(1)*sin(w(1)*ti(1))+eKw(2)*sin(w(2)*ti(1))+ ...
-                    + eKw(3)*sin(w(3)*ti(1))+eKw(4)*sin(w(4)*ti(1))) ;  
-        else
-            e1  = 0 ;
-            e1p = 0 ;
-        end
-      if ti(2) >= 0.
-          e2 = e01*(eK(1)*cos(w(1)*ti(2))+eK(2)*cos(w(2)*ti(2))+ ...
-                  + eK(3)*cos(w(3)*ti(2))+eK(4)*cos(w(4)*ti(2)) - 1.) ;
-          e2p = -e01*(eKw(1)*sin(w(1)*ti(2))+eKw(2)*sin(w(2)*ti(2))+ ...
-                    + eKw(3)*sin(w(3)*ti(2))+eKw(4)*sin(w(4)*ti(2))) ;  
-        else
-            e2  = 0 ;
-            e2p = 0 ;
-        end		  
-      if ti(3) >= 0.			  
-          e3 = e01*(eK(1)*cos(w(1)*ti(3))+eK(2)*cos(w(2)*ti(3))+ ...
-                  + eK(3)*cos(w(3)*ti(3))+eK(4)*cos(w(4)*ti(3)) - 1.) ;     
-          e3p = -e01*(eKw(1)*sin(w(1)*ti(3))+eKw(2)*sin(w(2)*ti(3))+ ...
-                    + eKw(3)*sin(w(3)*ti(3))+eKw(4)*sin(w(4)*ti(3))) ;    
-        else
-            e3  = 0 ;
-            e3p = 0 ;
-        end		  
-      if ti(4) >= 0.
-          e4 = e01*(eK(1)*cos(w(1)*ti(4))+eK(2)*cos(w(2)*ti(4))+ ...
-                  + eK(3)*cos(w(3)*ti(4))+eK(4)*cos(w(4)*ti(4)) - 1.) ;        
-          e4p = -e01*(eKw(1)*sin(w(1)*ti(4))+eKw(2)*sin(w(2)*ti(4))+ ...
-                    + eKw(3)*sin(w(3)*ti(4))+eKw(4)*sin(w(4)*ti(4))) ;             
-        else
-            e4  = 0 ;
-            e4p = 0 ;   
-        end
+    if ti(1) >= 0.	
+      e1 = e01*(eK(1)*cos(w(1)*ti(1))+eK(2)*cos(w(2)*ti(1))+ ...
+              + eK(3)*cos(w(3)*ti(1))+eK(4)*cos(w(4)*ti(1)) - 1.) ;
+      e1p = -e01*(eKw(1)*sin(w(1)*ti(1))+eKw(2)*sin(w(2)*ti(1))+ ...
+                + eKw(3)*sin(w(3)*ti(1))+eKw(4)*sin(w(4)*ti(1))) ;  
+    else
+        e1  = 0 ;
+        e1p = 0 ;
+    end
+    if ti(2) >= 0.
+      e2 = e01*(eK(1)*cos(w(1)*ti(2))+eK(2)*cos(w(2)*ti(2))+ ...
+              + eK(3)*cos(w(3)*ti(2))+eK(4)*cos(w(4)*ti(2)) - 1.) ;
+      e2p = -e01*(eKw(1)*sin(w(1)*ti(2))+eKw(2)*sin(w(2)*ti(2))+ ...
+                + eKw(3)*sin(w(3)*ti(2))+eKw(4)*sin(w(4)*ti(2))) ;  
+    else
+        e2  = 0 ;
+        e2p = 0 ;
+    end		  
+    if ti(3) >= 0.			  
+      e3 = e01*(eK(1)*cos(w(1)*ti(3))+eK(2)*cos(w(2)*ti(3))+ ...
+              + eK(3)*cos(w(3)*ti(3))+eK(4)*cos(w(4)*ti(3)) - 1.) ;     
+      e3p = -e01*(eKw(1)*sin(w(1)*ti(3))+eKw(2)*sin(w(2)*ti(3))+ ...
+                + eKw(3)*sin(w(3)*ti(3))+eKw(4)*sin(w(4)*ti(3))) ;    
+    else
+        e3  = 0 ;
+        e3p = 0 ;
+    end		  
+    if ti(4) >= 0.
+      e4 = e01*(eK(1)*cos(w(1)*ti(4))+eK(2)*cos(w(2)*ti(4))+ ...
+              + eK(3)*cos(w(3)*ti(4))+eK(4)*cos(w(4)*ti(4)) - 1.) ;        
+      e4p = -e01*(eKw(1)*sin(w(1)*ti(4))+eKw(2)*sin(w(2)*ti(4))+ ...
+                + eKw(3)*sin(w(3)*ti(4))+eKw(4)*sin(w(4)*ti(4))) ;             
+    else
+        e4  = 0 ;
+        e4p = 0 ;   
+    end
             
-            d1p = y(it,7)-y(it,8)-y(it,9)-L*y(it,10);
-            d2p = y(it,7)-y(it,8)+y(it,9)+L*y(it,10);
-            d11p= y(it,8)+y(it,9)-el*y(it,11)-e1p ;
-            d12p= y(it,8)+y(it,9)+el*y(it,11)-e2p ;
-            d21p= y(it,8)-y(it,9)-el*y(it,12)-e3p ;
-            d22p= y(it,8)-y(it,9)+el*y(it,12)-e4p ;  
+    d1p = y(it,7)-y(it,8)-y(it,9)-L*y(it,10);
+    d2p = y(it,7)-y(it,8)+y(it,9)+L*y(it,10);
+    d11p= y(it,8)+y(it,9)-el*y(it,11)-e1p ;
+    d12p= y(it,8)+y(it,9)+el*y(it,11)-e2p ;
+    d21p= y(it,8)-y(it,9)-el*y(it,12)-e3p ;
+    d22p= y(it,8)-y(it,9)+el*y(it,12)-e4p ;  
             
-     Qpp(it,1)  = -(beta*sign(d1p)*(abs(d1p)^mm)+beta*sign(d2p)*(abs(d2p)^mm)... 
-                + c2*y(it,1)-c2*y(it,2))/m ;
+    Qpp(it,1)  = -(beta*sign(d1p)*(abs(d1p)^mm)+beta*sign(d2p)*(abs(d2p)^mm)... 
+            + c2*y(it,1)-c2*y(it,2))/m ;
 
-     Qpp(it,2)  = (-(beta*(sign(-d1p)*(abs(-d1p)^mm)+sign(-d2p)*(abs(-d2p)^mm))... 
-                +  beta1*(sign(d11p)*(abs(d11p)^mm)+sign(d12p)*(abs(d12p)^mm)...
-                + sign(d21p)*(abs(d21p)^mm)+sign(d22p)*(abs(d22p)^mm))...
-                - c2*y(it,1)+c2c14*y(it,2)) + c1*(e1+e2+e3+e4)) /mt2 ;
+    Qpp(it,2)  = (-(beta*(sign(-d1p)*(abs(-d1p)^mm)+sign(-d2p)*(abs(-d2p)^mm))... 
+            +  beta1*(sign(d11p)*(abs(d11p)^mm)+sign(d12p)*(abs(d12p)^mm)...
+            + sign(d21p)*(abs(d21p)^mm)+sign(d22p)*(abs(d22p)^mm))...
+            - c2*y(it,1)+c2c14*y(it,2)) + c1*(e1+e2+e3+e4)) /mt2 ;
 
-     Qpp(it,3)  = (-(beta*(sign(-d1p)*(abs(-d1p)^mm)+sign(d2p)*(abs(d2p)^mm))... 
-                + beta1*(sign(d11p)*(abs(d11p)^mm)+sign(d12p)*(abs(d12p)^mm)...
-                + sign(-d21p)*(abs(-d21p)^mm)+sign(-d22p)*(abs(-d22p)^mm))...
-                + c2c14*y(it,3)+c2L*y(it,4)) + c1*(e1+e2-e3-e4)) /mt2 ;
-            
-     Qpp(it,4) = -(beta*(sign(-d1p)*(abs(-L*d1p)^mm)*(L^(1-mm))...
-                + sign(d2p)*(abs(L*d2p)^mm)*(L^(1-mm)))... 
-                + c2L*y(it,3)+cLmgh*y(it,4))/Jz ;
-      
-     Qpp(it,5) = (-(beta1*(sign(-d11p)*(abs(-el*d11p)^mm)*(el^(1-mm))...
-                + sign(d12p)*(abs(el*d12p)^mm)*(el^(1-mm)))... 
-                + c12el2*y(it,5)) - c1el*(e1-e2))/Jt ;
-      
-     Qpp(it,6) = (-(beta1*(sign(-d21p)*(abs(-el*d21p)^mm)*(el^(1-mm))...
-                + sign(d22p)*(abs(el*d22p)^mm)*(el^(1-mm)))... 
-                + c12el2*y(it,6)) - c1el*(e3-e4))/Jt ;   
-      
+    Qpp(it,3)  = (-(beta*(sign(-d1p)*(abs(-d1p)^mm)+sign(d2p)*(abs(d2p)^mm))... 
+            + beta1*(sign(d11p)*(abs(d11p)^mm)+sign(d12p)*(abs(d12p)^mm)...
+            + sign(-d21p)*(abs(-d21p)^mm)+sign(-d22p)*(abs(-d22p)^mm))...
+            + c2c14*y(it,3)+c2L*y(it,4)) + c1*(e1+e2-e3-e4)) /mt2 ;
+
+    Qpp(it,4) = -(beta*(sign(-d1p)*(abs(-L*d1p)^mm)*(L^(1-mm))...
+            + sign(d2p)*(abs(L*d2p)^mm)*(L^(1-mm)))... 
+            + c2L*y(it,3)+cLmgh*y(it,4))/Jz ;
+
+    Qpp(it,5) = (-(beta1*(sign(-d11p)*(abs(-el*d11p)^mm)*(el^(1-mm))...
+            + sign(d12p)*(abs(el*d12p)^mm)*(el^(1-mm)))... 
+            + c12el2*y(it,5)) - c1el*(e1-e2))/Jt ;
+
+    Qpp(it,6) = (-(beta1*(sign(-d21p)*(abs(-el*d21p)^mm)*(el^(1-mm))...
+            + sign(d22p)*(abs(el*d22p)^mm)*(el^(1-mm)))... 
+            + c12el2*y(it,6)) - c1el*(e3-e4))/Jt ;   
+
         end
          
         Q1 = y(:,1) ;   

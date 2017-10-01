@@ -8,7 +8,7 @@
 clear  ;
 betaL = input('Koef.na dempferirane na CRS s ekwiwal.linnen dempfer,Ns/m beta=');
 mm = input('Zadaite stepen na dempfera mm =');  
-beta = betaL*0.1/(0.1^(mm))  % korekcia na beta za nelineen dempfer
+beta = betaL*0.1/(0.1^(mm));  % korekcia na beta za nelineen dempfer
 m =     44160. ;        % kg , masa na koscha
 c =   1764800. ;        % N/m , koravina na CRS
 mt =    13494. ;        % kg , masa na obresorenara chast na taligata
@@ -55,9 +55,9 @@ nT  = 40 ; % broi na analiziranite periodi na 1-vi harmonik
 
 v = input('Zadaite Skorost na dvijenie V, m/s ='); 
 
-  F  = v/eL1     % Hz , chestota na smuschtenie ot 1-vi harmonik
-  T  = 1/F     ;  % s , period 
-  tf = nT*T      % s , vreme za razglevdan (pat S=eL1*nT*T)
+  F  = v/eL1;     % Hz , chestota na smuschtenie ot 1-vi harmonik
+  T  = 1/F;       % s , period 
+  tf = nT*T;      % s , vreme za razglevdan (pat S=eL1*nT*T)
  
 	%"v" se opredela ot daljinata na valnata na 1 harmonik i chestotata F
   tei = [0., elel/v, LL/v, (elel+LL)/v];  % defazirane na smushtenieto za koloosite
