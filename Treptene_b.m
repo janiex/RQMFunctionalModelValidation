@@ -98,33 +98,31 @@ for itt = 1:iterations
 
     nT  = 40 ; % broi na analiziranite periodi na 1-vi harmonik
 
-
-
-      F  = v/eL1;     % Hz , chestota na smuschtenie ot 1-vi harmonik
-      T  = 1/F;       % s , period 
-      tf = nT*T;      % s , vreme za razglevdan (pat S=eL1*nT*T)
-      Fdisc = 100; % 100 Hz sampling rate
-      Tdisc = 1/Fdisc; % period na diskretizaciq
-      t_disc = (0:Tdisc:tf)';
-        %"v" se opredela ot daljinata na valnata na 1 harmonik i chestotata F
-      tei = [0., elel/v, LL/v, (elel+LL)/v];  % defazirane na smushtenieto za koloosite
-      w(1) = 2.*pi*v/eL1 ;  % aglova chestota na 1 smushtenie (osnoven ton)
-      w(2) = 2.*pi*v/eL2 ;  % aglova chestota na 2 smushtenie 
-      w(3) = 2.*pi*v/eL3 ;  % aglova chestota na 3 smushtenie 
-      w(4) = 2.*pi*v/eL4 ;  % aglova chestota na 4 smushtenie 
-      eKw(1) = -eK(1)*w(1) ;
-      eKw(2) = -eK(2)*w(2) ;
-      eKw(3) = -eK(3)*w(3) ;
-      eKw(4) = -eK(4)*w(4) ;
+    F  = v/eL1;     % Hz , chestota na smuschtenie ot 1-vi harmonik
+    T  = 1/F;       % s , period 
+    tf = nT*T;      % s , vreme za razglevdan (pat S=eL1*nT*T)
+    Fdisc = 100; % 100 Hz sampling rate
+    Tdisc = 1/Fdisc; % period na diskretizaciq
+    t_disc = (0:Tdisc:tf)';
+    %"v" se opredela ot daljinata na valnata na 1 harmonik i chestotata F
+    tei = [0., elel/v, LL/v, (elel+LL)/v];  % defazirane na smushtenieto za koloosite
+    w(1) = 2.*pi*v/eL1 ;  % aglova chestota na 1 smushtenie (osnoven ton)
+    w(2) = 2.*pi*v/eL2 ;  % aglova chestota na 2 smushtenie 
+    w(3) = 2.*pi*v/eL3 ;  % aglova chestota na 3 smushtenie 
+    w(4) = 2.*pi*v/eL4 ;  % aglova chestota na 4 smushtenie 
+    eKw(1) = -eK(1)*w(1) ;
+    eKw(2) = -eK(2)*w(2) ;
+    eKw(3) = -eK(3)*w(3) ;
+    eKw(4) = -eK(4)*w(4) ;
       
-      y0 = zeros(12,1) ;
-      [t,y] = ode45(@Treptene_SDU_a,[0,tf],y0,[], ... 
-                     beta,c,m,J,beta1,c1,Jt,Jz,L,el,b2,c2,mt2, ...
-                     c2c14,c2L,c2L2,c1el,c12el2,cLmgh, ...
-                     e01,eK,eKw,tei,otm,w,mm); 
-                 
-        len_t = length(t);
-        Qpp = zeros(len_t,6);
+    y0 = zeros(12,1) ;
+    [t,y] = ode45(@Treptene_SDU_a,[0,tf],y0,[], ... 
+                 beta,c,m,J,beta1,c1,Jt,Jz,L,el,b2,c2,mt2, ...
+                 c2c14,c2L,c2L2,c1el,c12el2,cLmgh, ...
+                 e01,eK,eKw,tei,otm,w,mm); 
+             
+    len_t = length(t);
+    Qpp = zeros(len_t,6);
 for it = 1:len_t
     tt = t(it);
     ti(1) = tt - tei(1) - otm ;
@@ -133,27 +131,27 @@ for it = 1:len_t
     ti(4) = tt - tei(4) - otm ;
         
     if ti(1) >= 0.	
-      e1 = e01*(eK(1)*cos(w(1)*ti(1))+eK(2)*cos(w(2)*ti(1))+ ...
+        e1 = e01*(eK(1)*cos(w(1)*ti(1))+eK(2)*cos(w(2)*ti(1))+ ...
               + eK(3)*cos(w(3)*ti(1))+eK(4)*cos(w(4)*ti(1)) - 1.) ;
-      e1p = -e01*(eKw(1)*sin(w(1)*ti(1))+eKw(2)*sin(w(2)*ti(1))+ ...
+        e1p = -e01*(eKw(1)*sin(w(1)*ti(1))+eKw(2)*sin(w(2)*ti(1))+ ...
                 + eKw(3)*sin(w(3)*ti(1))+eKw(4)*sin(w(4)*ti(1))) ;  
     else
         e1  = 0 ;
         e1p = 0 ;
     end
     if ti(2) >= 0.
-      e2 = e01*(eK(1)*cos(w(1)*ti(2))+eK(2)*cos(w(2)*ti(2))+ ...
+        e2 = e01*(eK(1)*cos(w(1)*ti(2))+eK(2)*cos(w(2)*ti(2))+ ...
               + eK(3)*cos(w(3)*ti(2))+eK(4)*cos(w(4)*ti(2)) - 1.) ;
-      e2p = -e01*(eKw(1)*sin(w(1)*ti(2))+eKw(2)*sin(w(2)*ti(2))+ ...
+        e2p = -e01*(eKw(1)*sin(w(1)*ti(2))+eKw(2)*sin(w(2)*ti(2))+ ...
                 + eKw(3)*sin(w(3)*ti(2))+eKw(4)*sin(w(4)*ti(2))) ;  
     else
         e2  = 0 ;
         e2p = 0 ;
     end		  
     if ti(3) >= 0.			  
-      e3 = e01*(eK(1)*cos(w(1)*ti(3))+eK(2)*cos(w(2)*ti(3))+ ...
+        e3 = e01*(eK(1)*cos(w(1)*ti(3))+eK(2)*cos(w(2)*ti(3))+ ...
               + eK(3)*cos(w(3)*ti(3))+eK(4)*cos(w(4)*ti(3)) - 1.) ;     
-      e3p = -e01*(eKw(1)*sin(w(1)*ti(3))+eKw(2)*sin(w(2)*ti(3))+ ...
+        e3p = -e01*(eKw(1)*sin(w(1)*ti(3))+eKw(2)*sin(w(2)*ti(3))+ ...
                 + eKw(3)*sin(w(3)*ti(3))+eKw(4)*sin(w(4)*ti(3))) ;    
     else
         e3  = 0 ;
